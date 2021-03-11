@@ -21,7 +21,7 @@
             "@libs/*": ["./src/shared/libs/*"],
             "@config": ["./src/config"],
             "@identifier/*": ["./src/domains/identifier/*"],
-            "@lit-chain/*": ["./src/domains/lit-chain/*"],
+            // "@lit/*": ["./src/domains/lit/*"],
             "@shared/*": ["./src/shared/*"]
         }
     }

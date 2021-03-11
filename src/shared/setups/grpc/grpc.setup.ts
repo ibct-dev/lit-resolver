@@ -15,7 +15,7 @@
 //         options: {
 //             url: `${host}:${port}`,
 //             package: packageName,
-//             protoPath: join(`_proto/${fileName}`),
+//             protoPath: join(__dirname, `/../../../_proto/${fileName}`),
 //         },
 //     });
 

@@ -8,5 +8,6 @@ export const appConfig = {
     port: parseInt(process.env.PORT) || 3000,
     rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX) || 10000,
     // gRPC
-    clientId: process.env.CLIENT_ID || "",
+    // grpcPort: parseInt(process.env.GRPC_PORT) || 8900,
+    // clientId: process.env.CLIENT_ID || "",
 };

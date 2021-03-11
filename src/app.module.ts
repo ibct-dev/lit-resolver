@@ -6,7 +6,6 @@ import { LoggingInterceptor } from "@common/interceptors/logging.interceptor";
 import { HttpExceptionFilter } from "@common/filters/http-exception.filter";
 import { ValidationPipe } from "@common/pipes/validation.pipe";
 import { IdentifierModule } from "@identifier/identifier.module";
-// import { LitChainModule } from "@lit-chain/lit-chain.module";
 
 @Module({
     imports: [CqrsModule, LoggerModule, IdentifierModule],

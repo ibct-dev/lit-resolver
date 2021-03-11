@@ -8,6 +8,7 @@ import { AppModule } from "./app.module";
 import { LoggerModule } from "@shared/modules/logger/logger.module";
 import { LoggerService } from "@shared/modules/logger/logger.service";
 import { setupSwagger } from "@shared/setups/swagger/swagger.setup";
+// import { setupGrpc } from "@shared/setups/grpc/grpc.setup";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
@@ -68,6 +69,8 @@ async function bootstrap() {
                     { context: "BootStrap" }
                 );
         });
+
+        // await setupGrpc(app, "lit", "lit.proto", appConfig.grpcPort || 8900);
     } catch (error) {
         loggerService.error(`❌  Error starting server, ${error}`, {
             context: "BootStrap",
