@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "ES2019",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "incremental": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "esModuleInterop": true,
+        "paths": {
+            "@src/*": ["./src/*"],
+            "@common/*": ["./src/common/*"],
+            "@libs/*": ["./src/shared/libs/*"],
+            "@config": ["./src/config"],
+            "@identifier/*": ["./src/domains/identifier/*"],
+            "@lit-chain/*": ["./src/domains/lit-chain/*"],
+            "@shared/*": ["./src/shared/*"]
+        }
+    }
+}
