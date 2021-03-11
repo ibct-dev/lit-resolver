@@ -37,6 +37,10 @@ export class HttpExceptionFilter implements ExceptionFilter {
                         : "Internal server error",
             };
 
+            if (Object.keys(request.body).length !== 0) {
+                errorResponse["body"] = request.body;
+            }
+
             if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
                 this._logger.error(`${request.method} ${request.url}`, {
                     trace: exception.stack,
@@ -49,7 +53,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
                 });
             }
 
-            return response.status(status).json(errorResponse);
+            return response.status(status).json({ message, ...errorResponse });
         } else {
             return exception;
         }
