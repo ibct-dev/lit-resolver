@@ -1,6 +1,6 @@
 export interface IDidDocument {
     "@context": string;
-    did: string;
+    id: string;
     controller: string;
     service: Array<any>;
     authentication: Array<any>;

@@ -30,9 +30,9 @@ export class GetDidDocumentHandler
 
         const verificationMethod = rawDid.verificationMethod.map((p, idx) => {
             return {
-                id: `did:identifier:${BnToBase58(p.controller)}#${idx}`,
+                id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
                 type: `EcdsaSecp256k1VerificationKey2019`,
-                controller: `did:identifier:${BnToBase58(p.controller)}`,
+                controller: `did:lit:${BnToBase58(p.controller)}`,
                 publicKeyBase58: bs58.encode(
                     PublicKey.fromString(p.publicKey)
                         .toElliptic()
@@ -66,7 +66,7 @@ export class GetDidDocumentHandler
 
         return {
             "@context": `https://www.w3.org/ns/did/v1`,
-            did: `did:lit:${did}`,
+            id: `did:lit:${did}`,
             controller: rawDid.controller,
             service: rawDid.service,
             authentication,
