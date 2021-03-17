@@ -1,11 +1,7 @@
 import { registerAs } from "@nestjs/config";
 import { format, transports, LoggerOptions } from "winston";
-import { MongoDB } from "winston-mongodb";
-import { loggerDbConfig } from "@config";
 
 const { splat, json, timestamp, align, printf } = format;
-
-const dbUrl = `mongodb://${loggerDbConfig.mongodbUser}:${loggerDbConfig.mongodbPassword}@${loggerDbConfig.mongodbHost}:${loggerDbConfig.mongodbPort}/admin`;
 
 const consoleFormat = printf(info => {
     return JSON.stringify({
@@ -30,30 +26,6 @@ export default registerAs(
             new transports.Console({
                 level: "debug",
                 handleExceptions: true,
-            }),
-            new MongoDB({
-                db: dbUrl,
-                collection:
-                    process.env.MONGODB_LOG_INFO_COLLECTION_NAME ||
-                    "sample-log-info",
-                level: "info",
-                capped: true,
-                options: {
-                    useUnifiedTopology: true,
-                },
-                metaKey: "meta",
-            }),
-            new MongoDB({
-                db: dbUrl,
-                collection:
-                    process.env.MONGODB_LOG_ERROR_COLLECTION_NAME ||
-                    "sample-log-error",
-                level: "error",
-                capped: true,
-                options: {
-                    useUnifiedTopology: true,
-                },
-                metaKey: "meta",
             }),
         ],
         exitOnError: false,

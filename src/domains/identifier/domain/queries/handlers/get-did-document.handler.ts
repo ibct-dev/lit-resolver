@@ -1,5 +1,9 @@
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { IDidDocument, IKeyId } from "@shared/interfaces/did";
+import {
+    IDidDocument,
+    IKeyId,
+    IVerificationMethodIdx,
+} from "@shared/interfaces/did";
 import { LedgisService } from "@shared/modules/blockchain/ledgis/ledgis.service";
 import { GetDidDocumentQuery } from "../impl/get-did-document.query";
 import { BadRequestException } from "@common/errors/http.error";
@@ -28,18 +32,20 @@ export class GetDidDocumentHandler
             });
         }
 
-        const verificationMethod = rawDid.verificationMethod.map((p, idx) => {
-            return {
-                id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
-                type: `EcdsaSecp256k1VerificationKey2019`,
-                controller: `did:lit:${BnToBase58(p.controller)}`,
-                publicKeyBase58: bs58.encode(
-                    PublicKey.fromString(p.publicKey)
-                        .toElliptic()
-                        .getPublic(true, "array")
-                ),
-            };
-        });
+        const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
+            (p, idx) => {
+                return {
+                    id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
+                    type: `EcdsaSecp256k1VerificationKey2019`,
+                    controller: `did:lit:${BnToBase58(p.controller)}`,
+                    publicKeyBase58: bs58.encode(
+                        PublicKey.fromString(p.publicKey)
+                            .toElliptic()
+                            .getPublic(true, "array")
+                    ),
+                };
+            }
+        );
 
         const authentication = rawDid.authentication.map((keyId: IKeyId) =>
             this.keyId2Str({ ...keyId })

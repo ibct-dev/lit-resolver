@@ -20,4 +20,9 @@ COPY ./package.json .
 # Copy dependencies
 COPY --from=dependencies /tmp/node_modules ./node_modules
 
+ENV PORT=8080
+ENV RATE_LIMIT_MAX=10000
+
+EXPOSE 8080
+
 CMD ["yarn", "start:prod"]
