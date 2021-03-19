@@ -7,7 +7,7 @@ This is a [Universal Resolver](https://github.com/decentralized-identity/univers
 ## Specifications
 
 * [Decentralized Identifiers](https://w3c.github.io/did-core/)
-* [DID Method Spec](https://github.com/ibct-dev/lit-DID/blob/master/docs/did:lit-method-spec_en.md)
+* [DID Method Spec](https://github.com/ibct-dev/lit-DID/blob/main/docs/did:lit-method-spec_eng_v0.1.0.md)
 
 ## Example DIDs
 
@@ -18,8 +18,8 @@ did:lit:AEZ87t1bi5bRxmVh3ksMUi
 ## Build and Run (Docker)
 
 ```
-docker build -f ./docker/Dockerfile . -t emperorhan/driver-did-lit
-docker run -d -p 8080:8080 --env LEDGIS_LIT_ENDPOINT=https://lit.ledgis.io --env LEDGIS_LIT_CODE=lit --name lit-resolver emperorhan/driver-did-lit
+docker build -f ./docker/Dockerfile . -t ibct/driver-did-lit
+docker run -d -p 8080:8080 --env LEDGIS_LIT_ENDPOINT=https://lit.ledgis.io --env LEDGIS_LIT_CODE=lit --name lit-resolver ibct/driver-did-lit
 curl -X GET http://localhost:8080/1.0/identifiers/did:lit:AEZ87t1bi5bRxmVh3ksMUi
 ```
 
