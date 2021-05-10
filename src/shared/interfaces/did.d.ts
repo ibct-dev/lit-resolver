@@ -27,6 +27,7 @@ export interface IService {
 }
 
 export interface IVerificationMethod {
+    index: number;
     publicKey: string;
     controller: string;
 }

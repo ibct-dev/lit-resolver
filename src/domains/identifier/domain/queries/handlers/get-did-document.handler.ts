@@ -33,9 +33,9 @@ export class GetDidDocumentHandler
         }
 
         const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
-            (p, idx) => {
+            p => {
                 return {
-                    id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
+                    id: `did:lit:${BnToBase58(p.controller)}#${p.index}`,
                     type: `EcdsaSecp256k1VerificationKey2019`,
                     controller: `did:lit:${BnToBase58(p.controller)}`,
                     publicKeyBase58: bs58.encode(
