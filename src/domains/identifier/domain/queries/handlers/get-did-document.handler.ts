@@ -73,7 +73,7 @@ export class GetDidDocumentHandler
         return {
             "@context": `https://www.w3.org/ns/did/v1`,
             id: `did:lit:${did}`,
-            controller: rawDid.controller,
+            controller: `did:lit:${BnToBase58(rawDid.controller)}`,
             service: rawDid.service,
             authentication,
             assertionMethod,
