@@ -19,7 +19,7 @@ did:lit:AEZ87t1bi5bRxmVh3ksMUi
 
 ```
 docker build -f ./docker/Dockerfile . -t ibct/driver-did-lit
-docker run -d -p 8080:8080 --env LEDGIS_LIT_ENDPOINT=https://lit.ledgis.io --env LEDGIS_LIT_CODE=lit --name lit-resolver ibct/driver-did-lit
+docker run -d -p 8080:8080 --env LEDGIS_LIT_ENDPOINT=https://lit.ledgis.io --env LEDGIS_LIT_CODE=led.lit --name lit-resolver ibct/driver-did-lit
 curl -X GET http://localhost:8080/1.0/identifiers/did:lit:AEZ87t1bi5bRxmVh3ksMUi
 ```
 
@@ -41,7 +41,7 @@ The driver recognizes the following environment variables:
 ### `LEDGIS_LIT_CODE`
 
  * The code of lit did contract
- * Default value: `lit`
+ * Default value: `led.lit`
 
 ## Driver Metadata
 
