@@ -47,6 +47,19 @@ export class GetDidDocumentHandler
             }
         );
 
+        const verificationMethod2 = rawDid.verificationMethod2.map(p => {
+            return {
+                id: `did:lit:${BnToBase58(p.controller)}#${p.index}`,
+                type: `${p.keyType}`,
+                controller: `did:lit:${BnToBase58(p.controller)}`,
+                publicKeyBase58: p.publicKey,
+            };
+        });
+
+        for (let i = 0; i < verificationMethod2.length; i++) {
+            verificationMethod.push(verificationMethod2[i]);
+        }
+
         const authentication = rawDid.authentication.map((keyId: IKeyId) =>
             this.keyId2Str({ ...keyId })
         );

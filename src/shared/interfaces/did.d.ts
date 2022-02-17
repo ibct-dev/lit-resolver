@@ -30,6 +30,10 @@ export interface IVerificationMethod {
     publicKey: string;
     controller: string;
 }
+export interface IVerificationMethod2 extends IVerificationMethod {
+    keyType: string;
+    index: number;
+}
 
 export interface IKeyId {
     uuid: string;
@@ -41,6 +45,7 @@ export interface IRawDid {
     controller: string;
     service: IService[];
     verificationMethod: IVerificationMethod[];
+    verificationMethod2?: IVerificationMethod2[];
     authentication: IKeyId[];
     assertionMethod: IKeyId[];
     keyAgreement: IKeyId[];
