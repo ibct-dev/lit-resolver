@@ -28,7 +28,7 @@ export class LedgisService implements ILedgisService {
                     json: true,
                     code: this._config.code,
                     scope: this._config.code,
-                    table: "did",
+                    table: "didtbl",
                     lower_bound: secondaryIndex,
                     upper_bound: secondaryIndex,
                     index_position: 2,
