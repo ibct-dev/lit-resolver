@@ -24,7 +24,6 @@ export class GetDidDocumentHandler
     async execute(query: GetDidDocumentQuery): Promise<IDidDocument> {
         const did = query._did;
 
-        console.log("getRawDid ...");
         const rawDid = await this._ledgisService.getRawDid(did);
 
         if (!rawDid) {
@@ -33,7 +32,6 @@ export class GetDidDocumentHandler
             });
         }
 
-/*
         const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
             (p, idx) => {
                 return {
@@ -61,17 +59,6 @@ export class GetDidDocumentHandler
         for (let i = 0; i < verificationMethod2.length; i++) {
             verificationMethod.push(verificationMethod2[i]);
         }
-*/
-        const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
-            (p, idx) => {
-                return {
-                    id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
-                    type: `EcdsaSecp256k1VerificationKey2019`,
-                    controller: `did:lit:${BnToBase58(p.controller)}`,
-                    publicKeyBase58: p.publicKey,
-                };
-            }
-        );
 
         const authentication = rawDid.authentication.map((keyId: IKeyId) =>
             this.keyId2Str({ ...keyId })

@@ -20,7 +20,6 @@ export class LedgisService implements ILedgisService {
 
     public async getRawDid(did: string): Promise<IRawDid> {
         try {
-            console.log("did ::::: ", did);
             const secondaryIndex = BigInt(
                 `0x${bs58.decode(did).toString("hex")}`
             ).toString();
@@ -29,7 +28,7 @@ export class LedgisService implements ILedgisService {
                     json: true,
                     code: this._config.code,
                     scope: this._config.code,
-                    table: "didtbl",
+                    table: "did",
                     lower_bound: secondaryIndex,
                     upper_bound: secondaryIndex,
                     index_position: 2,
@@ -37,7 +36,6 @@ export class LedgisService implements ILedgisService {
                 })
             ).rows[0];
         } catch (error) {
-            console.error("error :::: ", error);
             throw new BadRequestException(`Get lit contract's raw did error.`, {
                 context: "LedgisService",
             });
