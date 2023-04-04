@@ -15,6 +15,7 @@ export class IdentifierService implements IIdentifierService {
     ) {}
 
     public async getDidDocument(did: string): Promise<IDidDocument> {
+        console.log("getDidDocument start ");
         return await this._queryBus.execute(new GetDidDocumentQuery(did));
     }
 }
