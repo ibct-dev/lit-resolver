@@ -32,6 +32,8 @@ export class GetDidDocumentHandler
             });
         }
 
+        console.log("rawDid :::: ", rawDid);
+
         const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
             (p, idx) => {
                 if (idx == 0 || idx == 1) {
