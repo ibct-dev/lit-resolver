@@ -36,25 +36,25 @@ export class GetDidDocumentHandler
 
         const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
             (p, idx) => {
-                // if (idx == 0 || idx == 1) {
-                return {
-                    id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
-                    type: `EcdsaSecp256k1VerificationKey2019`,
-                    controller: `did:lit:${BnToBase58(p.controller)}`,
-                    publicKeyBase58: bs58.encode(
-                        PublicKey.fromString(p.publicKey)
-                            .toElliptic()
-                            .getPublic(true, "array")
-                    ),
-                };
-                // } else {
-                //     return {
-                //         id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
-                //         type: `Bls12381G2Key2020`,
-                //         controller: `did:lit:${BnToBase58(p.controller)}`,
-                //         publicKeyBase58: p.publicKey,
-                //     };
-                // }
+                if (idx == 0 || idx == 1) {
+                    return {
+                        id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
+                        type: `EcdsaSecp256k1VerificationKey2019`,
+                        controller: `did:lit:${BnToBase58(p.controller)}`,
+                        publicKeyBase58: bs58.encode(
+                            PublicKey.fromString(p.publicKey)
+                                .toElliptic()
+                                .getPublic(true, "array")
+                        ),
+                    };
+                } else {
+                    return {
+                        id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
+                        type: `Bls12381G2Key2020`,
+                        controller: `did:lit:${BnToBase58(p.controller)}`,
+                        publicKeyBase58: p.publicKey,
+                    };
+                }
             }
         );
 
