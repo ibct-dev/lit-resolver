@@ -26,6 +26,8 @@ export class GetDidDocumentHandler
 
         const rawDid = await this._ledgisService.getRawDid(did);
 
+        console.log("GetDidDocumentQuery rawDid [" + rawDid + "]");
+
         if (!rawDid) {
             throw new BadRequestException(`Can not found did document`, {
                 context: "GetDidDocumentQuery",
@@ -100,6 +102,7 @@ export class GetDidDocumentHandler
                 `https://w3id.org/security/suites/bls12381-2020/v1`,
             ],
             id: `did:lit:${did}`,
+            uuid: rawDid.uuid,
             controller: `did:lit:${BnToBase58(rawDid.controller)}`,
             service: rawDid.service,
             authentication,

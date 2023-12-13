@@ -19,23 +19,27 @@ export class LedgisService implements ILedgisService {
     }
 
     public async getRawDid(did: string): Promise<IRawDid> {
+        console.log("getRawDid did : ", did);
         try {
             const secondaryIndex = BigInt(
                 `0x${bs58.decode(did).toString("hex")}`
             ).toString();
-            return (
-                await this.rpc.get_table_rows({
-                    json: true,
-                    code: this._config.code,
-                    scope: this._config.code,
-                    table: "did",
-                    lower_bound: secondaryIndex,
-                    upper_bound: secondaryIndex,
-                    index_position: 2,
-                    key_type: "i128",
-                })
-            ).rows[0];
+
+            const rslt = await this.rpc.get_table_rows({
+                json: true,
+                code: this._config.code,
+                scope: this._config.code,
+                table: "did",
+                lower_bound: secondaryIndex,
+                upper_bound: secondaryIndex,
+                index_position: 2,
+                key_type: "i128",
+            });
+            console.log("getRawDid ralt : ", rslt);
+
+            return rslt.rows[0];
         } catch (error) {
+            console.log("error : ", error);
             throw new BadRequestException(`Get lit contract's raw did error.`, {
                 context: "LedgisService",
             });

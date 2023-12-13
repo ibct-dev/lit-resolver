@@ -1,6 +1,7 @@
 export interface IDidDocument {
     "@context": string[];
     id: string;
+    uuid?: string;
     controller: string;
     service: Array<any>;
     authentication: Array<any>;
