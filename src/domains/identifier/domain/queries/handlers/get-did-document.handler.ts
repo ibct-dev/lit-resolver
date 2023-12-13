@@ -103,6 +103,7 @@ export class GetDidDocumentHandler
             ],
             id: `did:lit:${did}`,
             uuid: rawDid.uuid,
+            rawcontroller: rawDid.controller,
             controller: `did:lit:${BnToBase58(rawDid.controller)}`,
             service: rawDid.service,
             authentication,

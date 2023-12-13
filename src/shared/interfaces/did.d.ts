@@ -2,6 +2,7 @@ export interface IDidDocument {
     "@context": string[];
     id: string;
     uuid?: string;
+    rawcontroller?: string;
     controller: string;
     service: Array<any>;
     authentication: Array<any>;
