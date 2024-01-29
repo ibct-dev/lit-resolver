@@ -10,6 +10,12 @@ export class IdentifierController {
         private readonly _IdentifierService: IIdentifierService
     ) {}
 
+    @Get()
+    async handleRootRequest(): Promise<any> {
+        // Add your logic here to handle requests to the root path
+        return "HealthCheck.";
+    }
+
     @Get(":identifier")
     @Header("content-type", "application/did+ld+json")
     async findOneDidDocument(
