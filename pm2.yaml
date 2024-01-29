@@ -1,0 +1,15 @@
+apps:
+    - name: "lit-resolver"
+      script: ./dist/main.js
+      instances: 1
+      exec_mode: cluster
+      autorestart: true
+      watch: false
+      max_memory_restart: "2G"
+      error_file: ".pm2/stderr.log"
+      out_file: ".pm2/stdout.log"
+      merge_logs: true
+      wait_ready: true
+      listen_timeout: 5000
+      kill_timeout: 5000
+
