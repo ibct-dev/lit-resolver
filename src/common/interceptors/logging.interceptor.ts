@@ -19,6 +19,9 @@ export class LoggingInterceptor implements NestInterceptor {
         if (req) {
             const method = req.method;
             const url = req.url;
+            if (url === "/") {
+                return next.handle();
+            }
             return next.handle().pipe(
                 tap(() => {
                     this._logger.info(
