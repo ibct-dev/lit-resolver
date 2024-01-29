@@ -22,7 +22,7 @@ async function bootstrap() {
     const loggerService = app.select(LoggerModule).get(LoggerService);
 
     try {
-        app.setGlobalPrefix(appConfig.apiVersion);
+        //app.setGlobalPrefix(appConfig.apiVersion);
         app.use(rTracer.expressMiddleware());
 
         // added security

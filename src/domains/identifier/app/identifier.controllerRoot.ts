@@ -1,9 +1,10 @@
-import { Controller, Inject, Get, Header, Param } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 
 @Controller()
 export class IdentifierControllerRoot {
+    constructor() {}
     @Get()
-    async handleRootRequest(): Promise<any> {
+    async handleRequest(): Promise<any> {
         // Add your logic here to handle requests to the root path
         return "HealthCheck.";
     }

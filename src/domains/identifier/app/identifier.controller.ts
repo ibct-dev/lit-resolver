@@ -2,8 +2,9 @@ import { Controller, Inject, Get, Header, Param } from "@nestjs/common";
 import { IDidDocument } from "@shared/interfaces/did";
 import { DidValidationPipe } from "@common/pipes/did-validation.pipe";
 import { IIdentifierService } from "@identifier/domain/interfaces/identifier.interface";
+import { appConfig } from "@config";
 
-@Controller("identifiers")
+@Controller(appConfig.apiVersion + "/identifiers")
 export class IdentifierController {
     constructor(
         @Inject("IdentifierService")
