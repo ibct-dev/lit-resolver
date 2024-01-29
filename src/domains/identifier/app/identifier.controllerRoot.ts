@@ -6,6 +6,6 @@ export class IdentifierControllerRoot {
     @Get()
     async handleRequest(): Promise<any> {
         // Add your logic here to handle requests to the root path
-        return "HealthCheck.";
+        return "{HealthCheck.}";
     }
 }
