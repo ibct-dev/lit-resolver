@@ -10,7 +10,7 @@ export class IdentifierController {
         private readonly _IdentifierService: IIdentifierService
     ) {}
 
-    @Get()
+    @Get("/")
     async handleRootRequest(): Promise<any> {
         // Add your logic here to handle requests to the root path
         return "HealthCheck.";
