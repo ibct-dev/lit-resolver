@@ -6,6 +6,7 @@ import { LoggerModule } from "@shared/modules/logger/logger.module";
 import { LedgisModule } from "@shared/modules/blockchain/ledgis/ledgis.module";
 
 import { IdentifierController } from "@identifier/app/identifier.controller";
+import { IdentifierControllerRoot } from "@identifier/app/identifier.controllerRoot";
 import { IdentifierService } from "@identifier/app/identifier.service";
 
 // import { CommandHandlers } from "@identifier/domain-model/commands/handlers";
@@ -20,6 +21,6 @@ import { QueryHandlers } from "@identifier/domain/queries/handlers";
         ...QueryHandlers,
         // ...EventHandlers,
     ],
-    controllers: [IdentifierController],
+    controllers: [IdentifierController, IdentifierControllerRoot],
 })
 export class IdentifierModule {}
