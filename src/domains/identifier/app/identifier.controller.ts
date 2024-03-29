@@ -12,16 +12,16 @@ export class IdentifierController {
         private readonly _IdentifierService: IIdentifierService
     ) {}
 
+    @Get()
+    getHello(): string {
+        return "OK";
+    }
+
     @Get(":identifier")
     @Header("content-type", "application/did+ld+json")
     async findOneDidDocument(
         @Param("identifier", DidValidationPipe) did: string,
-        @Res() res: Response
     ): Promise<IDidDocument> {
-        if (!did) {
-            res.status(200).send(); // 파라미터가 없는 경우 OK 응답
-            return;
-        }
         return await this._IdentifierService.getDidDocument(did);
     }
 }
