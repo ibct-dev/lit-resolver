@@ -35,7 +35,7 @@ export class LedgisService implements ILedgisService {
                 index_position: 2,
                 key_type: "i128",
             });
-            console.log("getRawDid ralt : ", rslt);
+            // console.log("getRawDid ralt : ", rslt);
 
             return rslt.rows[0];
         } catch (error) {

@@ -20,7 +20,7 @@ export class IdentifierController {
     @Get(":identifier")
     @Header("content-type", "application/did+ld+json")
     async findOneDidDocument(
-        @Param("identifier", DidValidationPipe) did: string,
+        @Param("identifier", DidValidationPipe) did: string
     ): Promise<IDidDocument> {
         return await this._IdentifierService.getDidDocument(did);
     }

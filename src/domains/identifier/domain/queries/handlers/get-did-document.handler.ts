@@ -14,7 +14,8 @@ import { PublicKey } from "eosjs/dist/eosjs-jssig";
 
 @QueryHandler(GetDidDocumentQuery)
 export class GetDidDocumentHandler
-    implements IQueryHandler<GetDidDocumentQuery> {
+    implements IQueryHandler<GetDidDocumentQuery>
+{
     constructor(private readonly _ledgisService: LedgisService) {}
 
     private keyId2Str(keyId: IKeyId) {
@@ -26,7 +27,7 @@ export class GetDidDocumentHandler
 
         const rawDid = await this._ledgisService.getRawDid(did);
 
-        console.log("GetDidDocumentQuery rawDid [" + rawDid + "]");
+        // console.log("GetDidDocumentQuery rawDid [" + rawDid + "]");
 
         if (!rawDid) {
             throw new BadRequestException(`Can not found did document`, {
@@ -34,10 +35,10 @@ export class GetDidDocumentHandler
             });
         }
 
-        console.log("rawDid :::: ", rawDid);
+        // console.log("rawDid :::: ", rawDid);
 
-        const verificationMethod: IVerificationMethodIdx[] = rawDid.verificationMethod.map(
-            (p, idx) => {
+        const verificationMethod: IVerificationMethodIdx[] =
+            rawDid.verificationMethod.map((p, idx) => {
                 if (idx == 0 || idx == 1) {
                     return {
                         id: `did:lit:${BnToBase58(p.controller)}#${idx}`,
@@ -57,8 +58,7 @@ export class GetDidDocumentHandler
                         publicKeyBase58: p.publicKey,
                     };
                 }
-            }
-        );
+            });
 
         // const verificationMethod2 = rawDid.verificationMethod2.map(p => {
         //     return {
