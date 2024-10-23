@@ -19,7 +19,7 @@ export class LedgisService implements ILedgisService {
     }
 
     public async getRawDid(did: string): Promise<IRawDid> {
-        console.log("getRawDid did : ", did);
+        // console.log("getRawDid did : ", did);
         try {
             const secondaryIndex = BigInt(
                 `0x${bs58.decode(did).toString("hex")}`
