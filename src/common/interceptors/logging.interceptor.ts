@@ -24,12 +24,12 @@ export class LoggingInterceptor implements NestInterceptor {
             }
             return next.handle().pipe(
                 tap(() => {
-                    this._logger.info(
-                        `${method} ${url} ${Date.now() - now}ms`,
-                        {
-                            context: "Interceptor",
-                        }
-                    );
+                    // this._logger.info(
+                    //     `${method} ${url} ${Date.now() - now}ms`,
+                    //     {
+                    //         context: "Interceptor",
+                    //     }
+                    // );
                 })
             );
         }
