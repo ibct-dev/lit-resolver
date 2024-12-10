@@ -22,6 +22,7 @@ async function bootstrap() {
     const loggerService = app.select(LoggerModule).get(LoggerService);
 
     try {
+        app.enableCors();
         //app.setGlobalPrefix(appConfig.apiVersion);
         app.use(rTracer.expressMiddleware());
 
